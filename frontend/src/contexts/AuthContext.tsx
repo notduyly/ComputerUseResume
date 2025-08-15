@@ -24,7 +24,7 @@ interface AuthProviderProps {
 }
 
 // Provides auth state and functions to children components
-export function AuthProvider({ children }: AuthProviderProps) {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -41,12 +41,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       setCurrentUser(result.user)
-      
+
     } catch (error) {
       console.error('Login failed: ', error);
       throw error
     }
-  }
+  };
 
   const logout = async () => {
     try {
@@ -57,7 +57,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.error('Logout error:', error);
       throw error;
     }
-  }
+  };
 
   const value: AuthContextType = {
     currentUser,
@@ -71,4 +71,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
       {!loading && children}
     </AuthContext.Provider>
   );
-}
+};
