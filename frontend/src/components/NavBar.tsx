@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -9,20 +9,21 @@ export const NavBar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/');
+      navigate('/login');
     } catch (error) {
       console.error('Failed to log out', error);
+      alert('Logout failed. Please try again.');
     }
   };
 
   return (
-    <Navbar bg='white' data-bs-theme="light">
+    <Navbar style={{ backgroundColor: '#B8B8D9', padding: '10px' }} data-bs-theme="white">
       <Container>
         <Navbar.Brand href="/">
           Home
         </Navbar.Brand>
         <Nav className="ms-auto">
-          <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+          <Button variant='outline-dark' onClick={handleLogout}>Sign Out</Button>
         </Nav>
       </Container>
     </Navbar>
