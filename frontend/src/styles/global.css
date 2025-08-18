@@ -12,10 +12,9 @@ body {
 
 #root {
   min-height: 100vh;
-  background-color: #2a2b4a; /* Light gray background */
+  background-color: #2a2b4a;
 }
 
-/* Ensure all pages inherit the gray background */
 * {
   box-sizing: border-box;
 }
