@@ -1,21 +1,33 @@
-import { Form } from "react-bootstrap";
-import Orb from "../components/orb/Orb";
 import { useState } from "react";
+import { Container, Form } from "react-bootstrap";
+import Orb from "../components/orb/Orb";
+import '../styles/homepage.css'
 
 export const HomePage = () => {
   const [appLink, setAppLink] = useState('');
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0] || null;
+    setFile(selectedFile);
+  };
 
   return (
     <>
-      <div style={{ width: '100%', height: '60vh', marginTop: '100px' }}>
+    {/* Orb */}
+      <Container className='main-orb'>
         <Orb
           hoverIntensity={0.2}
           rotateOnHover={true}
           hue={0}
           forceHoverState={false}
         />
-      </div>
-      <div style={{ width: '35%', margin: '30px auto'}}>
+        {/* Content inside Orb */}
+        <Form.Control type='file' onChange={handleFileChange} accept='.pdf' className='inside-orb'/>
+      </Container>
+
+      {/* Application Link */}
+      <Container className='app-link'>
         <Form>
           <Form.Group className=''>
             <Form.Control 
@@ -28,7 +40,7 @@ export const HomePage = () => {
             />
           </Form.Group>
         </Form>
-      </div>
+      </Container>
       
     </>
   );

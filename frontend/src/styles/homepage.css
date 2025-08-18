@@ -1,0 +1,20 @@
+.main-orb {
+  width: 50%; 
+  height: 60vh; 
+  margin: 50px 25%;
+  position: relative;
+}
+
+.inside-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 30vh !important;
+}
+
+.app-link {
+  margin: 35px auto;
+  width: 60vh !important;
+}
